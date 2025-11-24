@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+
+# Build / Dist
+dist/
+build/
+.out/
+.next/
+storybook-static/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Tests / Coverage
+coverage/
+.vscode-test/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# TypeScript
+*.tsbuildinfo
+
+# Caches
+.cache/
+.parcel-cache/
+webpack-cache/
+.cache-loader/
+.eslintcache
+
+# Framework tooling
+.playwright/
+cypress/videos/
+cypress/screenshots/
+.turbo/
+.nx/
+
+# Yarn modern
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Firebase
+.firebase/
+
+# Packages / Lock (optional ignore if not committing)
+# pnpm-lock.yaml
+# yarn.lock
+# package-lock.json
