@@ -58,7 +58,7 @@ that showcases my skills and dedication to becoming a strong **Full-Stack Develo
 If you have feedback or opportunities, feel free to reach out!
 
 📧 Email: **chandrasai681@gmail.com**  
-🔗 LinkedIn: *[Add your Link here]*  
+🔗 LinkedIn: https://www.linkedin.com/in/sai-chandra9999/  
 🐙 GitHub: **@chandra999999**
 
 ---
