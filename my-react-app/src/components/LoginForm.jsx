@@ -1,29 +1,28 @@
 // LoginForm.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
-   
-
-    try {
-      const res = await axios.post("https://reqres.in/api/login", {
+    //Need to send to backend
+    try{
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
         email,
-        password,
+        password
       });
-
-      console.log("Login Success:", res.data);
-
-      alert("Login Successful!");
-    } catch (err) {
-      setError("Invalid credentials");
-      console.error(err);
-    } finally {
-      setLoading(false);
+setMsg(response.data.message);
+localStorage.setItem("token", response.data.token);
+navigate("/dashboard");
+console.log("Login Success:", response.data);
+    }catch(error){
+      console.error("Login failed:", error);
     }
   };
 

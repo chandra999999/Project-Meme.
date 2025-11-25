@@ -5,17 +5,20 @@ const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 const handleRegister = async (e) => {
     e.preventDefault();
    
 
     try {
-      const res = await axios.post("https://reqres.in/api/register", {
+      const res = await axios.post("http://localhost:5000/api/auth/register", {
+        name: username,
         email,
         password,
       });
 
       console.log("Register Success:", res.data);
+      setMessage(res.data.message);
       alert("Registration Successful!");
     } catch (err) {
       
