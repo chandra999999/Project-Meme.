@@ -1,29 +1,37 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { token, logout } = useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (!token) {
-        alert("Please login to access the dashboard.");
       navigate("/login");
     }
-  }, [navigate]);
+  }, [token, navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    logout();
     navigate("/login");
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to Dashboard 🎉</h1>
-      <button onClick={handleLogout}>
-        Logout
-      </button>
+    <div
+      style={{
+        marginTop: "60px", // height of navbar
+       
+        display: "flex",
+        
+       
+        padding: "20px",
+        background: "#00be3cff",
+      }}
+    >
+      <h1 style={{ fontSize: "32px", fontWeight: 600, marginBottom: "20px" }}>
+        Welcome to Dashboard 🎉
+      </h1>
     </div>
   );
 };

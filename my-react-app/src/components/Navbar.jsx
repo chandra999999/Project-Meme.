@@ -40,6 +40,9 @@ const Navbar = () => {
         <Link to="/dashboard" style={{ color: "white", textDecoration: "none", fontWeight: 500 }}>
           Dashboard
         </Link>
+        <Link to="/profile" style={{ color: "Green", textDecoration: "none", fontWeight: 500 }}>
+          Profile
+        </Link>
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
