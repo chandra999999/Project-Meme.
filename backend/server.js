@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import router from "./routes/authRoutes.js";
+import Profilerouter from "./routes/ProfileRoute.js";
   //Helps in loading environment variables from .env file
 
 const app = express();
@@ -13,7 +14,8 @@ dotenv.config();
 connectDB(); //Establish connection to MongoDB
 
 app.use("/api/auth", router);
-
+app.use("/api/profile",Profilerouter);
+console.log("Profile routes added to the server.");
 
 const PORT = process.env.PORT || 5000;
 

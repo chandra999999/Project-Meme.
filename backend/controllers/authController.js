@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
+import Profile from "../models/Profile.js";
 
 
 export const RegisterUser = async (req, res) => {
@@ -21,6 +21,12 @@ export const RegisterUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
+    //Create a profile when the User is Registered.
+    await Profile.create(
+      {user: newUser._id,
+        description: "",
+        followers: 0,
+        following: 0});
 
     return res.status(201).json({
       message: "User registered successfully!",
@@ -47,7 +53,7 @@ export const LoginUser = async(req,res)=>{
         return res.status(400).json({ message: "Invalid email or password" });
       }else{
         // Generate Token
-    const token = jwt.sign({ id: user._id }, "MY_SECRET_KEY", {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "3d",
     });
         return res.status(200).json(
@@ -64,3 +70,36 @@ export const LoginUser = async(req,res)=>{
     return res.status(500).json({ message: "Server Error" });
   }
 }
+
+
+export const getProfile  = async (req,res)=>{
+  try{
+    const userId = req.user.id;
+    console.log(req.user.id);
+    console.log("fetching profile for user:", userId);
+    const profile = await Profile.findOne({user: userId}).populate('user','name email');
+    console.log("Profile found:", profile);
+    res.status(200).json(profile);
+  }catch(error){
+    res.status(500).json({ message: "Server Error" });
+  }
+}
+
+
+
+export const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { description } = req.body;
+
+    const updated = await Profile.findOneAndUpdate(
+      { user: userId },
+      { description },
+      { new: true }
+    );
+
+    res.json({ message: "Profile updated", profile: updated });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating profile" });
+  }
+};
