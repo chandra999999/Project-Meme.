@@ -1,6 +1,6 @@
 # 🚀 Social Media Web App (In Progress)
 
-Hi! 👋 I'm **Chandra**, a passionate developer who is learning and building consistently every day.  
+Hi! 👋 I'm **Sai Chandra**, a passionate developer who is learning and building consistently every day.  
 This project is a **Full-Stack Social Media Web App** built using **React.js** and **Node.js**.
 
 I started this project to:
@@ -14,8 +14,8 @@ I started this project to:
 ## 🛠️ Tech Stack
 
 ### Frontend
-- ⚛️ React.js (Hooks, Context API / Redux)
-- 🎨 TailwindCSS / Material UI *(based on your choice)*
+- ⚛️ React.js (Hooks, Context API)
+- 🎨 TailwindCSS 
 
 ### Backend
 - 🟩 Node.js with Express.js
